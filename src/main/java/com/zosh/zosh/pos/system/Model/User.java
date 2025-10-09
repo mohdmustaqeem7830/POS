@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@Table(name = "users")
 public class User {
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)

@@ -2,7 +2,7 @@ package com.zosh.zosh.pos.system.Services;
 
 import com.zosh.zosh.pos.system.Exceptions.UserException;
 import com.zosh.zosh.pos.system.Payload.Response.AuthResponse;
-import com.zosh.zosh.pos.system.dto.UserDto;
+import com.zosh.zosh.pos.system.Payload.dto.UserDto;
 
 public interface AuthService {
 

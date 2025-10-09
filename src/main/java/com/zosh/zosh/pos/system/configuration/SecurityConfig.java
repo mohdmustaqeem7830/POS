@@ -23,14 +23,16 @@ public class SecurityConfig {
     @Bean
    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 
+
      return http
            .sessionManagement(management-> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-           .authorizeHttpRequests(Authorize -> Authorize.requestMatchers("/api/**").authenticated()
-                   .requestMatchers("/api/super-admin/**").hasRole("ADMIN").anyRequest().permitAll())
+           .authorizeHttpRequests(Authorize -> Authorize
+                   .requestMatchers("/api/**").authenticated()
+                   .requestMatchers("/api/super-admin/**")
+                   .hasRole("ADMIN").anyRequest().permitAll())
            .addFilterBefore(new JwtValidator(), BasicAuthenticationFilter.class)
            .csrf(AbstractHttpConfigurer::disable)
-           .cors(
-                   cors-> cors.configurationSource(corsConfigurationSource())
+           .cors(cors-> cors.configurationSource(corsConfigurationSource())
            ).build();
 
    }

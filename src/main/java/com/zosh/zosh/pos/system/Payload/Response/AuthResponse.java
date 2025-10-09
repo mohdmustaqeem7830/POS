@@ -1,6 +1,6 @@
 package com.zosh.zosh.pos.system.Payload.Response;
 
-import com.zosh.zosh.pos.system.dto.UserDto;
+import com.zosh.zosh.pos.system.Payload.dto.UserDto;
 import lombok.Data;
 
 @Data

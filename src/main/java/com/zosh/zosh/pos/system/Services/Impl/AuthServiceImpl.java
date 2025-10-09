@@ -7,11 +7,9 @@ import com.zosh.zosh.pos.system.Payload.Response.AuthResponse;
 import com.zosh.zosh.pos.system.Repository.UserRepository;
 import com.zosh.zosh.pos.system.Services.AuthService;
 import com.zosh.zosh.pos.system.configuration.JWTProvider;
-import com.zosh.zosh.pos.system.dto.UserDto;
+import com.zosh.zosh.pos.system.Payload.dto.UserDto;
 import com.zosh.zosh.pos.system.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
-import org.springframework.jca.support.LocalConnectionFactoryBean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -38,6 +36,8 @@ public class AuthServiceImpl  implements AuthService {
 
     @Override
     public AuthResponse signup(UserDto userDto) throws UserException {
+
+        System.out.println("Signup method called for: " + userDto.getEmail());
 
         User user  = userRepository.findByEmail(userDto.getEmail());
         if (user!=null){
@@ -69,7 +69,7 @@ public class AuthServiceImpl  implements AuthService {
         String jwt = jwtProvider.generateToken(authentication);
 
         AuthResponse authResponse = new AuthResponse();
-        authResponse.setJwt(jwt);
+          authResponse.setJwt(jwt);
         authResponse.setMessage("Registered Successfully");
         authResponse.setUser(UserMapper.toDto(saveUser));
 

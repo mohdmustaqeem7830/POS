@@ -1,4 +1,4 @@
-package com.zosh.zosh.pos.system.dto;
+package com.zosh.zosh.pos.system.Payload.dto;
 
 import com.zosh.zosh.pos.system.Domain.UserRole;
 import jakarta.persistence.Column;

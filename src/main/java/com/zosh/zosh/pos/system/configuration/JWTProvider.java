@@ -47,9 +47,9 @@ public class JWTProvider {
                 .parseSignedClaims(jwt)
                 .getPayload();
 
-        String email = String.valueOf(claims.get("email"));
 
-        return  email;
+
+        return String.valueOf(claims.get("email"));
     }
 
     private String populateAuthorities(Collection<? extends GrantedAuthority> authorities) {
