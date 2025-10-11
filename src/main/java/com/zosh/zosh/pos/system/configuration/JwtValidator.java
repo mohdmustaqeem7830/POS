@@ -25,14 +25,6 @@ import java.util.List;
 public class JwtValidator extends OncePerRequestFilter {
 
 
-    // security part koi gadbad kare tab hum is code ko hata denge  should not filter ka pura method or do filter internal wale me Bearer wali condition ko hata denge
-    //mujhe doubt h ki ye code lagane se ye security implement nahin kar rha h
-    @Override
-    protected boolean shouldNotFilter(HttpServletRequest request) {
-        // Auth endpoints ko skip kar do
-        String path = request.getServletPath();
-        return path.startsWith("/auth");
-    }
 
 
 
@@ -71,17 +63,15 @@ public class JwtValidator extends OncePerRequestFilter {
 
           }
           catch (Exception e){
-
-              //or uper ki 2 line bhi hata di jayengi tab purana code aa jayega
-              response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-              response.getWriter().write("Invalid JWT");
               throw  new BadCredentialsException("Invalid JWT...");
           }
 
 
-          filterChain.doFilter(request,response);
-
 
       }
+
+        filterChain.doFilter(request,response);
+
+
     }
 }
