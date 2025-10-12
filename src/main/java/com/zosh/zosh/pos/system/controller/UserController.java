@@ -26,8 +26,7 @@ public class UserController {
      }
 
      @GetMapping("/{id}")
-     public ResponseEntity<UserDto> getUserById(@RequestHeader("Authorization") String jwt ,@PathVariable() Long id) throws UserException {
-
+     public ResponseEntity<UserDto> getUserById(@RequestHeader("Authorization") String jwt ,@PathVariable() Long id) throws UserException, Exception {
          User user =  userService.getUserById(id);
          return ResponseEntity.ok(UserMapper.toDto(user));
      }

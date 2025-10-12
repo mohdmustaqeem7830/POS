@@ -34,6 +34,9 @@ public class User {
    @Enumerated(EnumType.STRING)
    private UserRole role;
 
+   @ManyToOne
+   private Store store;
+
    private String phone ;
 
    @Column(columnDefinition = "datetime")
