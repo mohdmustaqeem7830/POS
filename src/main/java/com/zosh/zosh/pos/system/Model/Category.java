@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Cateogory {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
