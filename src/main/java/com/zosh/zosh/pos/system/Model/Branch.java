@@ -25,7 +25,10 @@ public class Branch {
     @ElementCollection()
     private List<String> workingDays;
 
+    @Column(columnDefinition = "TIME")
     private LocalTime openingTime;
+
+    @Column(columnDefinition = "TIME")
     private LocalTime closingTime;
 
     @Column(columnDefinition = "datetime")
