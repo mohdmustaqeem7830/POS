@@ -14,8 +14,9 @@ import java.time.LocalTime;
 @Builder
 public class Inventory {
 
-@Id
-    private Long id ;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @ManyToOne()
     private Branch branch;
@@ -23,22 +24,18 @@ public class Inventory {
     @ManyToOne()
     private Product product;
 
-@Column(nullable=false)
+    @Column(nullable = false)
     private Integer quantity;
 
 
     @Column(columnDefinition = "datetime")
-private LocalTime lastUpdate;
+    private LocalTime lastUpdate;
 
 
-    @PrePersist
-    @PreUpdate
-    protected  void onUpdate(){
+   @PreUpdate
+    protected void onUpdate() {
         this.lastUpdate = LocalTime.now();
     }
-
-
-
 
 
 }
