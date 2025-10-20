@@ -23,6 +23,10 @@ public class UserDto {
 
     private String password;
 
+    private Long  branchId;
+
+    private Long storeId;
+
     @Column(columnDefinition = "datetime")
     private LocalDateTime createdAt;
     @Column(columnDefinition = "datetime")

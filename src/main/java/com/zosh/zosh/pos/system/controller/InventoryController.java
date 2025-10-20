@@ -8,6 +8,7 @@ import com.zosh.zosh.pos.system.Services.InventoryServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManagerResolver;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,8 +42,8 @@ public class InventoryController {
     }
 
     @GetMapping("/branch/{branchId}/product/{productId}")
-    public ResponseEntity<InventoryDto> getInventoryByProductIdAndBranchId(Long branchId,Long productId) throws Exception {
-        return ResponseEntity.ok(inventoryServices.getInventoryByProductIdAndBranchId(branchId,productId));
+    public ResponseEntity<InventoryDto> getInventoryByProductIdAndBranchId(@PathVariable Long branchId,@PathVariable Long productId) throws Exception {
+        return ResponseEntity.ok(inventoryServices.getInventoryByProductIdAndBranchId(productId,branchId));
     }
 
     @GetMapping("/branch/{branchId}")
